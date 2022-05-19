@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Dimkinthepro\SqrsBundle\Tests\Query\Fixtures;
 
-class GetBookQueryHandler
+use Dimkinthepro\SqrsBundle\Query\QueryHandlerInterface;
+
+class GetBookQueryHandler implements QueryHandlerInterface
 {
     public function __invoke(GetBookQuery $query): ?Book
     {

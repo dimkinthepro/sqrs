@@ -3,5 +3,14 @@ services:
     autowire: true
     autoconfigure: true
 
+  _instanceof:
+    Dimkinthepro\SqrsBundle\Command\CommandHandlerInterface:
+      tags:
+        - { name: messenger.message_handler, bus: command.bus }
+
+    Dimkinthepro\SqrsBundle\Query\QueryHandlerInterface:
+      tags:
+        - { name: messenger.message_handler, bus: query.bus }
+
   Dimkinthepro\SqrsBundle\:
     resource: '../../'
