@@ -6,8 +6,4 @@ namespace Dimkinthepro\SQRS\Command;
 
 interface CommandHandlerInterface
 {
-    /**
-     * @param CommandInterface $command
-     */
-    public function __invoke(mixed $command): mixed;
 }
