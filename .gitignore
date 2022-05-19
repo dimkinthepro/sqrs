@@ -3,3 +3,4 @@
 /vendor/
 .php-cs-fixer.cache
 .phpcs-cache
+.phpunit.result.cache

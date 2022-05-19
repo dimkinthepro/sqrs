@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dimkinthepro\SQRS;
+namespace Dimkinthepro\SqrsBundle;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dimkinthepro\SQRS\Command;
+namespace Dimkinthepro\SqrsBundle\Command;
 
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;

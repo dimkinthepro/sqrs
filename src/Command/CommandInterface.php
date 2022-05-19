@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dimkinthepro\SQRS\Command;
+namespace Dimkinthepro\SqrsBundle\Command;
 
 interface CommandInterface
 {

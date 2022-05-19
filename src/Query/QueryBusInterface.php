@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dimkinthepro\SQRS\Query;
+namespace Dimkinthepro\SqrsBundle\Query;
 
 interface QueryBusInterface
 {
