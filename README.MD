@@ -8,16 +8,23 @@ composer require dimkinthepro/sqrs
 ### update "config/services.yaml"
 ```yaml
 services:
-    #...
-    _instanceof:
-      Dimkinthepro\SQRS\Command\CommandHandlerInterface:
-        tags:
-          - { name: messenger.message_handler, bus: command.bus }
-
-      Dimkinthepro\SQRS\Query\QueryHandlerInterface:
-        tags:
-          - { name: messenger.message_handler, bus: query.bus }
-    #...
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    
+  #...
+  _instanceof:
+    Dimkinthepro\SQRS\Command\CommandHandlerInterface:
+      tags:
+        - { name: messenger.message_handler, bus: command.bus }
+    
+    Dimkinthepro\SQRS\Query\QueryHandlerInterface:
+      tags:
+        - { name: messenger.message_handler, bus: query.bus }
+          
+  Dimkinthepro\SQRS\Query\QueryBus: ~
+  Dimkinthepro\SQRS\Command\CommandBus: ~
+  #...
 ```
 
 ### update "config/packages/messenger.yaml":
@@ -35,7 +42,7 @@ framework:
 ```
 
 ## 2. Usage example:
-1) Create command
+1.Create command
 ```php
 # src/Command/CreateBook/CreateBookCommand.php
 <?php
