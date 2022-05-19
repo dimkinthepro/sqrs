@@ -4,13 +4,13 @@ services:
     autoconfigure: true
 
   _instanceof:
-    Dimkinthepro\SqrsBundle\Command\CommandHandlerInterface:
-      tags:
-        - { name: messenger.message_handler, bus: command.bus }
-
     Dimkinthepro\SqrsBundle\Query\QueryHandlerInterface:
       tags:
-        - { name: messenger.message_handler, bus: query.bus }
+        - { name: messenger.message_handler, bus: query_bus }
+
+    Dimkinthepro\SqrsBundle\Command\CommandHandlerInterface:
+      tags:
+        - { name: messenger.message_handler, bus: command_bus }
 
   Dimkinthepro\SqrsBundle\:
     resource: '../../'
