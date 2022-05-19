@@ -5,6 +5,16 @@
 composer require dimkinthepro/sqrs
 ```
 
+### update "config/bundles.php"
+```php
+<?php
+
+return [
+#...
+    Dimkinthepro\SqrsBundle\SqrsBundle::class => ['all' => true],
+];
+```
+
 ### update "config/services.yaml"
 ```yaml
 services:
@@ -14,16 +24,13 @@ services:
     
   #...
   _instanceof:
-    Dimkinthepro\SQRS\Command\CommandHandlerInterface:
+    Dimkinthepro\SqrsBundle\Query\QueryHandlerInterface:
       tags:
-        - { name: messenger.message_handler, bus: command.bus }
-    
-    Dimkinthepro\SQRS\Query\QueryHandlerInterface:
+        - { name: messenger.message_handler, bus: query_bus }
+
+    Dimkinthepro\SqrsBundle\Command\CommandHandlerInterface:
       tags:
-        - { name: messenger.message_handler, bus: query.bus }
-          
-  Dimkinthepro\SQRS\Query\QueryBus: ~
-  Dimkinthepro\SQRS\Command\CommandBus: ~
+        - { name: messenger.message_handler, bus: command_bus }
   #...
 ```
 
@@ -32,12 +39,12 @@ services:
 ```yaml
 framework:
     messenger:
-        default_bus: query.bus
+        default_bus: query_bus
         buses:
-            command.bus:
+            query_bus:
+            command_bus:
                 middleware:
                     - doctrine_transaction
-            query.bus:
 #...
 ```
 
@@ -51,7 +58,7 @@ declare(strict_types=1);
 
 namespace App\Command\CreateBook;
 
-use Dimkinthepro\SQRS\Command\Command\CommandInterface;
+use Dimkinthepro\SqrsBundle\Command\Command\CommandInterface;
 
 class CreateBookCommand implements CommandInterface
 {
@@ -74,7 +81,7 @@ namespace App\Command\CreateBook;
 
 use App\Domain\Entity\Book;
 use App\Domain\Repository\BookRepositoryInterface;
-use Dimkinthepro\SQRS\Command\Command\CommandHandlerInterface;
+use Dimkinthepro\SqrsBundle\Command\Command\CommandHandlerInterface;
 
 class CreateBookCommandHandler implements CommandHandlerInterface
 {
