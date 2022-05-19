@@ -1,4 +1,5 @@
 {
+    "name": "dimkinthepro/sqrs",
     "type": "project",
     "license": "MIT",
     "minimum-stability": "stable",
